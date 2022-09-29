@@ -3,6 +3,7 @@ $(function(){
   // 调用 getUserInfo获取信息
   getUserInfo()
   let layer = layui.layer
+  // 点击按钮实现退出功能
   $('#btnLogout').on('click',function(){
     // 提示用户是否确认退出
     layer.confirm('确定退出登录?', {icon: 3, title:'提示'}, function(index){
@@ -31,6 +32,16 @@ function getUserInfo(){
       // 调用renderAvatar渲染用户头像
       renderAvatar(res.data)
     }
+    // 不论成功还是失败，最终都会调用complete回调函数
+    // complete:function(res){
+    //   // 在complete回调函数中，可以使用res.responseJSON拿到服务器响应回阿里的数据
+    //   if(res.responseJSON.status === 1 && res.responseJSON.message === '身份验证失败！'){
+    //     // 1.强制清空 token
+    //     localStorage.removeItem('token')
+    //     // 2.强制跳转到登录页面
+    //     location.href = '/login.html'
+    //   }
+    // }
   })
 }
 // 渲染用户头像
